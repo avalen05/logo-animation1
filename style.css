@@ -3,7 +3,7 @@ body {
     padding: 0;
     display: flex;
     justify-content: center; /* Horizontally center the grid */
-    min-height: 100vh; /* Ensure the height is at least 100vh to enable scrolling */
+    min-height: 100vh; /* Ensure the height is at least 100vh to allow scrolling */
     background-color: #ffffff; /* White background */
     overflow-y: auto; /* Enable vertical scrolling */
 }
@@ -16,25 +16,20 @@ body {
     row-gap: 10px; /* Reduced vertical spacing between rows */
     padding: 20px;
     max-width: 1200px; /* Limit max width to 1200px */
-    height: auto; /* Let the height adjust based on content */
     justify-self: center; /* Center the grid horizontally */
 }
 
 /* Ensure logos are responsive and maintain a square aspect ratio */
 .logo-slot {
+    position: relative;
     width: 100%; /* Make logos responsive */
+    padding-top: 100%; /* Maintain square aspect ratio */
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     background-color: #ffffff; /* White background for each slot */
     opacity: 1; /* Ensure logos start fully visible */
     transition: opacity 1s ease-in-out; /* Smooth transition for fading */
-}
-
-.logo-slot::before {
-    content: "";
-    display: block;
-    padding-top: 100%; /* Maintain square aspect ratio */
 }
 
 .fade-out {
@@ -54,7 +49,7 @@ body {
         height: auto; /* Ensure grid height adapts to content */
     }
 
-    .logo-slot::before {
+    .logo-slot {
         padding-top: 100%; /* Maintain square logos */
     }
 }
@@ -69,7 +64,7 @@ body {
         height: auto; /* Ensure grid height adapts to content */
     }
 
-    .logo-slot::before {
+    .logo-slot {
         padding-top: 100%; /* Maintain square logos */
     }
 }
