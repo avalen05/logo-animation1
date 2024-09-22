@@ -53,48 +53,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function replaceOneLogo() {
-        const logoSlots = document.querySelectorAll('.logo-slot');
-
-        // Randomly select a slot to replace the logo
-        const randomSlotIndex = Math.floor(Math.random() * logoSlots.length);
-        const slot = logoSlots[randomSlotIndex];
-
-        // If all logos from the available array are used, re-populate it
-        if (availableLogos.length === 0) {
-            availableLogos = logos.filter(logo => !currentlyDisplayed.includes(logo)); // Avoid duplicates
-        }
-
-        // Get a new logo from availableLogos
-        const newLogo = availableLogos.pop(); // Remove from available logos
-        const oldLogo = currentlyDisplayed[randomSlotIndex]; // Current logo in this slot
-
-        // Switch the logo by preparing the new one before fade-in
-        slot.classList.add('fade-out');
-
-        slot.addEventListener('transitionend', function () {
-            // Ensure new logo is set before fading in
-            slot.style.backgroundImage = `url(${newLogo})`;
-            slot.classList.remove('fade-out');
-            slot.classList.add('fade-in');
-
-            // Update currently displayed and available logos
-            currentlyDisplayed[randomSlotIndex] = newLogo;
-            availableLogos.unshift(oldLogo); // Put the old logo into available logos
-
-            // Remove the fade-in class after the transition to avoid conflicts
-            setTimeout(() => {
-                slot.classList.remove('fade-in');
-            }, 1000); // Matches the CSS transition duration
-
-        }, { once: true }); // This ensures the event only runs once for this transition
-
-        // Set a delay for the next replacement
-        const randomDelay = Math.random() * (4000 - 2000) + 2000;
-        setTimeout(replaceOneLogo, randomDelay); // Schedule next replacement
-    }
-
-    // Initialize logos and start the replacement cycle
-    initializeLogos();
-    setTimeout(replaceOneLogo, Math.random() * (2000 - 1000) + 1000); // Start replacements
+    initializeLogos(); // Initialize and display logos
 });
