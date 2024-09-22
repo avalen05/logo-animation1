@@ -2,26 +2,26 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    justify-content: center; /* Horizontally center the grid */
+    min-height: 100vh; /* Ensure the height is at least 100vh to allow scrolling */
     background-color: #ffffff; /* White background */
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .logo-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Default: 5 logos per row */
-    grid-template-rows: auto; /* Adjusts rows automatically based on content */
+    grid-template-columns: repeat(5, 1fr); /* Default for larger screens: 5 logos per row */
+    grid-template-rows: auto; /* Automatically adjust rows based on content */
     column-gap: 40px; /* Horizontal spacing */
-    row-gap: 5px; /* Vertical spacing */
+    row-gap: 10px; /* Reduced vertical spacing between rows */
     padding: 20px;
-    width: 100%; /* Stretch the grid to fill the width of the screen */
-    max-width: 1200px; /* Limit max width for very large screens */
+    max-width: 1200px; /* Limit max width to 1200px */
+    justify-self: center; /* Center the grid horizontally */
 }
 
 .logo-slot {
     width: 100%; /* Make logos responsive */
-    padding-bottom: 100%; /* Keep logos square */
+    padding-top: 100%; /* Maintain square aspect ratio */
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -38,39 +38,31 @@ body {
     opacity: 1; /* Fade in to visible */
 }
 
-/* Media Query for larger screens (e.g., MacBook Pro 16") */
-@media (min-width: 1440px) {
-    .logo-grid {
-        grid-template-columns: repeat(6, 1fr); /* 6 logos per row on larger screens */
-        column-gap: 50px; /* Increase gap between columns */
-    }
-
-    .logo-slot {
-        padding-bottom: 90%; /* Adjust size to fit better on large screens */
-    }
-}
-
-/* Media Query for Tablet (e.g., screens 768px wide) */
+/* Media Query for Tablet (e.g., iPad screens up to 768px wide) */
 @media (max-width: 768px) {
     .logo-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 logos per row */
+        grid-template-columns: repeat(5, 1fr); /* 5 logos per row */
         column-gap: 20px; /* Decrease gap for smaller screens */
+        row-gap: 5px; /* Reduce row gap for iPad */
+        height: auto; /* Ensure grid height adapts to content */
     }
 
     .logo-slot {
-        padding-bottom: 100%;
+        padding-top: 100%; /* Maintain square logos */
     }
 }
 
-/* Media Query for Mobile (e.g., screens 480px wide) */
+/* Media Query for Mobile (e.g., screens 480px wide or smaller) */
 @media (max-width: 480px) {
     .logo-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 logos per row */
-        column-gap: 10px; /* Reduce gap between columns */
-        row-gap: 10px; /* Increase row gap slightly for better layout */
+        grid-template-columns: repeat(4, 1fr); /* 4 logos per row */
+        grid-template-rows: repeat(3, 1fr); /* 3 rows for a 4x3 layout */
+        column-gap: 10px; /* Smaller gaps between logos */
+        row-gap: 3px; /* Reduce row gap for mobile */
+        height: auto; /* Ensure grid height adapts to content */
     }
 
     .logo-slot {
-        padding-bottom: 100%; /* Maintain square shape */
+        padding-top: 100%; /* Maintain square logos */
     }
 }
