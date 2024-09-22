@@ -17,17 +17,24 @@ body {
     padding: 20px;
     width: 100%; /* Stretch the grid to fill the width of the screen */
     max-width: 1200px; /* Limit max width to 1200px */
+    height: 606px; /* Height for computer */
 }
 
 .logo-slot {
     width: 100%; /* Make logos responsive */
-    padding-bottom: 100%; /* Keep logos square */
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     background-color: #ffffff; /* White background for each slot */
     opacity: 1; /* Ensure logos start fully visible */
     transition: opacity 1s ease-in-out; /* Smooth transition for fading */
+}
+
+/* Maintain square aspect ratio */
+.logo-slot::before {
+    content: "";
+    display: block;
+    padding-top: 100%; /* 1:1 Aspect Ratio for square logos */
 }
 
 .fade-out {
@@ -38,41 +45,31 @@ body {
     opacity: 1; /* Fade in to visible */
 }
 
-/* Media Query for larger screens (e.g., MacBook Pro, desktop, iPad landscape) */
-@media (min-width: 769px) {
-    .logo-grid {
-        grid-template-columns: repeat(5, 1fr); /* 5 logos per row */
-        column-gap: 40px; /* Horizontal spacing */
-    }
-
-    .logo-slot {
-        padding-bottom: 100%; /* Logos will remain square */
-    }
-}
-
-/* Media Query for Tablet (e.g., screens up to 768px wide - iPad in portrait) */
+/* Media Query for Tablet (e.g., iPad screens up to 768px wide) */
 @media (max-width: 768px) {
     .logo-grid {
         grid-template-columns: repeat(5, 1fr); /* 5 logos per row */
         column-gap: 20px; /* Decrease gap for smaller screens */
         row-gap: 15px; /* Adjust row gap */
+        height: 364px; /* Set height for iPad */
     }
 
-    .logo-slot {
-        padding-bottom: 100%;
+    .logo-slot::before {
+        padding-top: 100%; /* Maintain square logos */
     }
 }
 
 /* Media Query for Mobile (e.g., screens 480px wide or smaller) */
 @media (max-width: 480px) {
     .logo-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 logos per row for mobile */
+        grid-template-columns: repeat(4, 1fr); /* 4 logos per row */
         grid-template-rows: repeat(3, 1fr); /* 3 rows for a 4x3 layout */
         column-gap: 10px; /* Smaller gaps between logos */
         row-gap: 10px; /* Increase row gap slightly */
+        height: 185px; /* Height for mobile screens */
     }
 
-    .logo-slot {
-        padding-bottom: 80%; /* Make logos slightly smaller for mobile */
+    .logo-slot::before {
+        padding-top: 100%; /* Maintain square logos */
     }
 }
