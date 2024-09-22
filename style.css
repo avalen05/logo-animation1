@@ -2,10 +2,10 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    justify-content: center; /* Horizontally center the grid */
+    min-height: 100vh; /* Ensure the height is at least 100vh to enable scrolling */
     background-color: #ffffff; /* White background */
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .logo-grid {
@@ -15,11 +15,12 @@ body {
     column-gap: 40px; /* Horizontal spacing */
     row-gap: 10px; /* Reduced vertical spacing between rows */
     padding: 20px;
-    width: 100%; /* Stretch the grid to fill the width of the screen */
     max-width: 1200px; /* Limit max width to 1200px */
-    height: 606px; /* Height for computer */
+    height: auto; /* Let the height adjust based on content */
+    justify-self: center; /* Center the grid horizontally */
 }
 
+/* Ensure logos are responsive and maintain a square aspect ratio */
 .logo-slot {
     width: 100%; /* Make logos responsive */
     background-size: contain;
@@ -30,11 +31,10 @@ body {
     transition: opacity 1s ease-in-out; /* Smooth transition for fading */
 }
 
-/* Maintain square aspect ratio */
 .logo-slot::before {
     content: "";
     display: block;
-    padding-top: 100%; /* 1:1 Aspect Ratio for square logos */
+    padding-top: 100%; /* Maintain square aspect ratio */
 }
 
 .fade-out {
@@ -51,7 +51,7 @@ body {
         grid-template-columns: repeat(5, 1fr); /* 5 logos per row */
         column-gap: 20px; /* Decrease gap for smaller screens */
         row-gap: 5px; /* Reduce row gap for iPad */
-        height: 364px; /* Set height for iPad */
+        height: auto; /* Ensure grid height adapts to content */
     }
 
     .logo-slot::before {
@@ -66,7 +66,7 @@ body {
         grid-template-rows: repeat(3, 1fr); /* 3 rows for a 4x3 layout */
         column-gap: 10px; /* Smaller gaps between logos */
         row-gap: 3px; /* Reduce row gap for mobile */
-        height: 185px; /* Height for mobile screens */
+        height: auto; /* Ensure grid height adapts to content */
     }
 
     .logo-slot::before {
