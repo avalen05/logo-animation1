@@ -10,7 +10,7 @@ body {
 
 .logo-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 logos per row */
+    grid-template-columns: repeat(5, 1fr); /* 5 logos per row for larger screens */
     grid-template-rows: repeat(3, 1fr); /* 3 rows */
     column-gap: 40px; /* Horizontal spacing */
     row-gap: 5px; /* Vertical spacing */
@@ -34,4 +34,30 @@ body {
 
 .fade-in {
     opacity: 1; /* Fade in to visible */
+}
+
+/* Media Query for Tablet (e.g., screens 768px wide) */
+@media (max-width: 768px) {
+    .logo-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 logos per row */
+        grid-template-rows: repeat(5, 1fr); /* 5 rows */
+    }
+
+    .logo-slot {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* Media Query for Mobile (e.g., screens 480px wide) */
+@media (max-width: 480px) {
+    .logo-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 logos per row */
+        grid-template-rows: repeat(8, 1fr); /* 8 rows */
+    }
+
+    .logo-slot {
+        width: 100px;
+        height: 100px;
+    }
 }
