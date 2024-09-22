@@ -13,7 +13,7 @@ body {
     grid-template-columns: repeat(5, 1fr); /* Default for larger screens: 5 logos per row */
     grid-template-rows: auto; /* Automatically adjust rows based on content */
     column-gap: 40px; /* Horizontal spacing */
-    row-gap: 10px; /* Reduced vertical spacing between rows */
+    row-gap: 20px; /* Vertical spacing */
     padding: 20px;
     width: 100%; /* Stretch the grid to fill the width of the screen */
     max-width: 1200px; /* Limit max width to 1200px */
@@ -50,7 +50,7 @@ body {
     .logo-grid {
         grid-template-columns: repeat(5, 1fr); /* 5 logos per row */
         column-gap: 20px; /* Decrease gap for smaller screens */
-        row-gap: 5px; /* Reduce row gap for iPad */
+        row-gap: 15px; /* Adjust row gap */
         height: 364px; /* Set height for iPad */
     }
 
@@ -65,7 +65,7 @@ body {
         grid-template-columns: repeat(4, 1fr); /* 4 logos per row */
         grid-template-rows: repeat(3, 1fr); /* 3 rows for a 4x3 layout */
         column-gap: 10px; /* Smaller gaps between logos */
-        row-gap: 3px; /* Reduce row gap for mobile */
+        row-gap: 10px; /* Increase row gap slightly */
         height: 185px; /* Height for mobile screens */
     }
 
